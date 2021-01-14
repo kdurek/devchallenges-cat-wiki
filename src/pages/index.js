@@ -1,8 +1,8 @@
 import {useEffect} from 'react';
 import Head from 'next/head';
-import Default from '../components/layouts/DefaultLayout';
 import HomePage from '../components/templates/HomePage';
 import shuffleArray from '../utils/shuffleArray';
+import DefaultLayout from '../components/layouts/DefaultLayout';
 
 export default function Home({breeds, shuffledBreeds}) {
   useEffect(() => {
@@ -10,12 +10,12 @@ export default function Home({breeds, shuffledBreeds}) {
     console.log(shuffledBreeds);
   }, []);
   return (
-    <Default>
+    <DefaultLayout>
       <Head>
         <title>Cat Wiki</title>
       </Head>
-      <HomePage shuffledBreeds={shuffledBreeds} />
-    </Default>
+      <HomePage breeds={breeds} shuffledBreeds={shuffledBreeds} />
+    </DefaultLayout>
   );
 }
 

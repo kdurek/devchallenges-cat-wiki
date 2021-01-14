@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import SearchInput from '../elements/SearchInput';
+import Search from '../elements/Search';
 
-const HomePage = ({shuffledBreeds}) => (
-  <div className="container px-4 mx-auto mt-2">
+const HomePage = ({breeds, shuffledBreeds}) => (
+  <div className="container px-4 mx-auto mt-4">
     <section className="overflow-hidden rounded-3xl">
       <div className="relative">
         <img className="" src="/HeroImagelg.png" alt="" />
@@ -16,7 +16,7 @@ const HomePage = ({shuffledBreeds}) => (
             <p className="mt-2 text-xs text-white md:text-2xl sm:text-xl sm:mt-4">
               Get to know more about your cat breed
             </p>
-            <SearchInput />
+            <Search breeds={breeds} />
           </div>
         </div>
       </div>
@@ -33,11 +33,11 @@ const HomePage = ({shuffledBreeds}) => (
             </button>
           </Link>
         </div>
-        <div className="flex flex-wrap justify-between mt-2 mb-10 -mx-4 sm:mt-4">
+        {/* <div className="flex flex-wrap justify-between mt-2 mb-10 -mx-4 sm:mt-4">
           {shuffledBreeds.map(breed => (
             <img key={breed.image.id} src={breed.image.url} alt="" />
           ))}
-        </div>
+        </div> */}
         {/* <div className="flex flex-wrap justify-between mt-2 mb-10 -mx-4 sm:mt-4">
           {topSearched.length === 0 &&
             [1, 1, 1, 1].map((x, i) => <CatImage className="px-4" key={i} />)}
@@ -66,12 +66,16 @@ const HomePage = ({shuffledBreeds}) => (
         </p>
       </div>
       <div className="grid w-full gap-6 px-4 mt-4 md:w-1/2 grid-rows-2-auto grid-cols-2-auto xl:gap-8 lg:gap-6 md:gap-5 sm:gap-10">
-        <img className="transition transform hover:scale-105" src="image2.png" alt="" />
-        <img className="row-span-2 transition transform hover:scale-105" src="image3.png" alt="" />
+        <img className="transition transform hover:scale-105" src="/image2.png" alt="image2" />
+        <img
+          className="row-span-2 transition transform hover:scale-105"
+          src="/image3.png"
+          alt="image3"
+        />
         <img
           className="w-3/4 transition transform hover:scale-105 justify-self-end"
-          src="image1.png"
-          alt=""
+          src="/image1.png"
+          alt="image1"
         />
       </div>
     </section>

@@ -13,8 +13,8 @@ const DefaultLayout = ({children}) => {
   );
 };
 
-DefaultLayout.propTypes = {
-  children: PropTypes.array,
-};
+// DefaultLayout.propTypes = {
+//   children: PropTypes.array,
+// };
 
 export default DefaultLayout;

@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <div className="container px-4 mx-auto mt-2">
       <Link href="/">
-        <img className="w-48" src="CatwikiLogo.svg" alt="cat-wiki-logo" />
+        <img className="w-48" src="/CatwikiLogo.svg" alt="cat-wiki-logo" />
       </Link>
     </div>
   );
