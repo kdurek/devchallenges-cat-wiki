@@ -26,10 +26,6 @@
   @apply absolute block w-20 h-1 bg-warmGray-900 -top-4;
 }
 
-.cat-img:hover > *:last-child {
-  @apply animate-to-left;
-}
-
 .animate-underline {
   @apply relative;
 }

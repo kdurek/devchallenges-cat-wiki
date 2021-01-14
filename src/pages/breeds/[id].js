@@ -1,9 +1,13 @@
+import Head from 'next/head';
 import DefaultLayout from '../../components/layouts/DefaultLayout';
 import BreedPage from '../../components/templates/BreedPage';
 
 const Breeds = ({breed}) => {
   return (
     <DefaultLayout>
+      <Head>
+        <title>Cat Wiki - {breed[0].breeds[0].name}</title>
+      </Head>
       <BreedPage breed={breed} />
     </DefaultLayout>
   );

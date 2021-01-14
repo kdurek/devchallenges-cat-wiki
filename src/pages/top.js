@@ -1,30 +1,26 @@
-import {useEffect} from 'react';
 import Head from 'next/head';
-import HomePage from '../components/templates/HomePage';
 import DefaultLayout from '../components/layouts/DefaultLayout';
+import TopPage from '../components/templates/TopPage';
 import {db} from '../../firebase';
 
-export default function Home({breeds, topBreedsData}) {
-  useEffect(() => {
-    console.log(topBreedsData);
-  }, []);
+const Breeds = ({breeds}) => {
   return (
     <DefaultLayout>
       <Head>
-        <title>Cat Wiki</title>
+        <title>Cat Wiki - Top breeds</title>
       </Head>
-      <HomePage breeds={breeds} topBreedsData={topBreedsData} />
+      <TopPage breeds={breeds} />
     </DefaultLayout>
   );
-}
+};
 
 export async function getStaticProps() {
   const url = 'https://api.thecatapi.com/v1/breeds/';
-  const breeds = await fetch(url).then(res => res.json());
+  const fetchBreeds = await fetch(url).then(res => res.json());
 
   const topBreeds = await db.limit(10).orderBy('count', 'desc').get();
-  const topBreedsData = topBreeds.docs.map(doc => {
-    let breed = breeds.find(e => e.id == doc.id);
+  const breeds = topBreeds.docs.map(doc => {
+    let breed = fetchBreeds.find(e => e.id == doc.id);
     return {
       id: doc.id,
       count: doc.data().count,
@@ -35,9 +31,8 @@ export async function getStaticProps() {
   });
 
   return {
-    props: {
-      breeds,
-      topBreedsData,
-    },
+    props: {breeds},
   };
 }
+
+export default Breeds;

@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Search from '../elements/Search';
+import CatCard from '../elements/CatCard';
 
-const HomePage = ({breeds, shuffledBreeds}) => (
+const HomePage = ({breeds, topBreedsData}) => (
   <div className="container px-4 mx-auto mt-4">
     <section className="overflow-hidden rounded-3xl">
       <div className="relative">
@@ -26,25 +27,18 @@ const HomePage = ({breeds, shuffledBreeds}) => (
           <h2 className="w-3/4 text-lg font-bold lg:text-5xl sm:text-4xl md:w-1/2 sm:w-3/4">
             66+ Breeds For you to discover
           </h2>
-          <Link href="/">
+          <Link href="/top">
             <button className="hidden font-bold text-warmGray-900 focus:outline-none text-opacity-60 sm:block animate-underline">
               <span>SEE MORE </span>
               <span className="align-middle material-icons">search</span>
             </button>
           </Link>
         </div>
-        {/* <div className="flex flex-wrap justify-between mt-2 mb-10 -mx-4 sm:mt-4">
-          {shuffledBreeds.map(breed => (
-            <img key={breed.image.id} src={breed.image.url} alt="" />
+        <div className="flex flex-wrap justify-between mt-2 mb-10 -mx-4 sm:mt-4">
+          {topBreedsData.slice(0, 4).map(breed => (
+            <CatCard key={breed.id} breed={breed} />
           ))}
-        </div> */}
-        {/* <div className="flex flex-wrap justify-between mt-2 mb-10 -mx-4 sm:mt-4">
-          {topSearched.length === 0 &&
-            [1, 1, 1, 1].map((x, i) => <CatImage className="px-4" key={i} />)}
-          {topSearched.slice(0, 4).map((x: TopSearchedCat) => (
-            <CatImage className="px-4" key={x.id} data={x} />
-          ))}
-        </div> */}
+        </div>
       </div>
     </section>
     <section className="flex flex-col items-center my-16 -mx-4 2xl:px-24 xl:px-20 lg:px-16 md:px-14 md:flex-row">
@@ -57,7 +51,7 @@ const HomePage = ({breeds, shuffledBreeds}) => (
           which lower your stress and anxiety leves
         </p>
         <p className="mt-10 mb-10 lg:mt-10 md:mt-7">
-          <Link href="/">
+          <Link href="/top">
             <button className="font-bold text-warmGray-900 text-opacity-60 animate-underline">
               <span>READ MORE </span>
               <span className="align-middle material-icons">search</span>

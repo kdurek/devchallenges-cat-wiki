@@ -1,6 +1,8 @@
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/storage';
 
-if (typeof window !== 'undefined' && !firebase.apps.length) {
+if (!firebase.apps.length) {
   firebase.initializeApp({
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -11,10 +13,10 @@ if (typeof window !== 'undefined' && !firebase.apps.length) {
   });
 }
 const app = firebase.app();
-const db = firebase.firestore();
+const db = firebase.firestore().collection('cat-wiki');
 const now = firebase.firestore.Timestamp.now();
 const storage = firebase.storage();
 
-export {db, now, storage};
+export {firebase, db, now, storage};
 
 console.log(app.name ? 'Firebase Mode Activated!' : 'Firebase not working :(');
